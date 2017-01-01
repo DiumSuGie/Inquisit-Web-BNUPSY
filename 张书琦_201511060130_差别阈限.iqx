@@ -1,0 +1,170 @@
+ <item pic>
+    /1 = "pictures/grey1.jpg"
+    /2 = "pictures/grey2.jpg"
+    /3 = "pictures/grey3.jpg"
+    /4 = "pictures/grey4.jpg"
+    /5 = "pictures/grey5.jpg"
+    /6 = "pictures/grey6.jpg"
+    /7 = "pictures/grey7.jpg"
+    /8 = "pictures/grey8.jpg"
+    /9 = "pictures/grey9.jpg"
+    /10 = "pictures/grey10.jpg"
+ </item>
+
+<item pic2>
+/1 = "pictures/grey1.jpg"
+</item>
+
+
+<instruct instruction>
+/nextkey = (" ")
+/ fontstyle = ("宋体Light", 3.5%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0,0)
+/screencolor = (255,255,255)
+/lastlabel = "请点击鼠标。"
+/windowsize = (800,600)
+</instruct>
+
+//设置图片
+<picture s1>
+    /items=group1
+    /position = (10,10)
+	/size=(400,300)
+    /valign = top
+    / halign = left
+</picture>
+
+
+<picture s2>
+    /items=group1
+    /position = (60,10)
+	/size=(400,300)
+    /valign = top
+    / halign = left
+</picture>
+
+<picture s3>
+    /items=group1
+    /position = (10,50)
+	/size=(400,300)
+    /valign = top
+    / halign = left
+</picture>
+
+<picture s4>
+    /items=group1
+    /position = (60,50)
+	/size=(400,300)
+    /valign = top
+    / halign = left
+</picture>
+
+<picture o1>
+    /items=group2
+    /position = (10,10)
+	/size=(400,300)
+    /valign = top
+    / halign = left
+</picture>
+
+<picture o2>
+    /items=group2
+    /position = (60,10)
+	/size=(400,300)
+    /valign = top
+    / halign = left
+</picture>
+
+<picture o3>
+    /items=group2
+    /position = (10,50)
+	/size=(400,300)
+    /valign = top
+    / halign = left
+</picture>
+
+
+<picture o4>
+    /items=group2
+    /position = (50,50)
+	/size=(400,300)
+    /valign = top
+    / halign = left
+</picture>
+
+
+
+//正误判断，给反馈
+
+<text correct>
+	/items = ("√")
+	/fontstyle = ("Arial", 10%)
+	/txbgcolor = (transparent)
+	/txcolor = (255,255,255)
+</text>
+
+
+<text error>
+	/items = ("×")
+	/fontstyle = ("Arial", 10%)
+	/txbgcolor = (transparent)
+	/txcolor = (255,255,255)
+</text>
+
+
+<trial trial1>
+	/correctmessage = (correctmsg,500)
+	/errormessage = (errormsg,500)
+	/pretrialpause = 500
+	/validresponse = (s1,o2,o3,o4)
+	/correctresponse = (s1)
+	/stimulusframes = [1 = fixation; 100 = cover,s1,o2,o3,o4]
+</trial>
+
+
+<trial trial2>
+	/correctmessage = (correctmsg,500)
+	/errormessage = (errormsg,500)
+	/pretrialpause = 500
+	/validresponse = (o1,s2,o3,o4)
+	/correctresponse = (s2)
+	/stimulusframes = [1 = fixation; 100 = cover,o1,s2,o3,o4]
+</trial>
+
+
+<trial trial3>
+	/correctmessage = (correctmsg,500)
+	/errormessage = (errormsg,500)
+	/pretrialpause = 500
+	/validresponse = (o1,o2,s3,o4)
+	/correctresponse = (s3)
+	/stimulusframes = [1 = fixation; 100 = cover,o1,o2,s3,o4]
+</trial>
+
+
+<trial trial4>
+	/correctmessage = (correctmsg,500)
+	/errormessage = (errormsg,500)
+	/pretrialpause = 500
+	/validresponse = (o1,o2,o3,s4)
+	/correctresponse = (s4)
+	/stimulusframes = [1 = fixation; 100 = cover,o1,o2,o3,s4]
+</trial>
+
+
+<block all>
+	/screencolor = (0,0,0)
+	/blockfeedback = (meanlatency,correct)
+	/trials = [1-20 = noreplace(trial1, trial2,trial3,trial4)]
+</block>
+
+
+<expt>
+	/preinstructions = (instruction)
+	/ blocks = [1 = all]
+</expt>
+
+
+<defaults>
+	/inputdevice = mouse
+</defaults>
